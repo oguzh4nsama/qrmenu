@@ -1,0 +1,107 @@
+.grid-Kutu > .top,
+.grid-Kutu > .mid,
+.grid-Kutu > .bot {
+  padding: 12px;
+  font-size: 16px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.986);
+  color: red;
+}
+body {
+  background-color: brown;
+}
+.grid-Kutu {
+  display: grid;
+  grid-template-areas:
+    "mid mid mid"
+    "bot bot bot";
+  grid-template-rows: auto 3fr auto; /* Üst, orta ve alt satırlar */
+  gap: 15px; /* Hücreler arasındaki boşluk */
+  height: 100vh; /* Yüksekliği ekranın tamamı kadar yap */
+  
+  img {
+    width: 230px;
+    height: 200px;
+    position: relative;
+    top: 0px;
+  }
+  .mid {
+    grid-area: mid;
+    display: grid;
+    grid-template-columns: repeat(2, 1.5fr); 
+    gap: 15px; 
+    justify-items: center; 
+  }
+  .menuu {
+    width: 225px;
+    height: 300px;
+    border-radius: 32%;
+    border: 3px solid gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .beyaz {
+    background-color: #fff;
+    width: 300px;
+    color: red;
+    height: 100px;
+    text-decoration: none; /* Alt çizgiyi kaldırır */
+    display: block; /* Tüm <li> elemanını kapsaması için blok seviye yapar */
+  }
+}
+.top {
+  grid-area: top;
+}
+.mid {
+  grid-area: mid;
+}
+.bot {
+  grid-area: bot;
+}
+@media only screen and (max-width: 600px) {
+  .grid-Kutu {
+    grid-template-areas:
+      "top top"
+      "mid mid"
+      "bot bot";
+    grid-template-rows: 1.5fr 2fr 1.5fr; /* Üst, orta ve alt satırlar */
+    gap: 10px; /* Hücreler arasındaki boşluk */
+    height: 100vh; /* Yüksekliği ekranın tamamı kadar yap */
+    background: black;
+    img{
+      width: 140px;
+      height: 68px;
+    }
+    .menuu {
+      width: 140px;
+      height: 169px;
+      border-radius: 10%;
+      border: 3px solid gray;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-sizing: border-box;
+      overflow: hidden;
+      position: relative;
+    }
+  .beyaz {
+    background-color: #fff;
+    width: 140px;
+    color: black;
+    height: 74px;
+    text-decoration: none; /* Alt çizgiyi kaldırır */
+    display: block; /* Tüm <li> elemanını kapsaması için blok seviye yapar */
+  }
+  }
+  .menuu {
+    background-color:black;
+    width: 10px;
+    height: 10px;
+    position: fixed;
+    top: 50%;
+  }
+}
