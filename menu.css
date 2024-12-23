@@ -13,10 +13,10 @@ body {
 .grid-Kutu {
   display: grid;
   grid-template-areas:
-    "mid mid mid"
-    "bot bot bot";
-  grid-template-rows: auto 3fr auto; /* Üst, orta ve alt satırlar */
-  gap: 15px; /* Hücreler arasındaki boşluk */
+    "top top top"
+    "mid mid mid";
+  grid-template-rows: auto 2fr auto; /* Üst, orta ve alt satırlar */
+  gap: 10px; /* Hücreler arasındaki boşluk */
   height: 100vh; /* Yüksekliği ekranın tamamı kadar yap */
   
   img {
@@ -35,7 +35,7 @@ body {
   .menuu {
     width: 225px;
     height: 300px;
-    border-radius: 32%;
+    border-radius: 3%;
     border: 3px solid gray;
     display: flex;
     flex-direction: column;
