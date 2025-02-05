@@ -18,7 +18,17 @@ body {
   grid-template-rows: auto 2fr auto; /* Üst, orta ve alt satırlar */
   gap: 10px; /* Hücreler arasındaki boşluk */
   height: 100vh; /* Yüksekliği ekranın tamamı kadar yap */
-  
+  .logo{
+    left: 0px;
+  }
+  .site_logo{
+    left: 0px;
+    width: 145px;
+    height: 100px;
+    position: absolute;
+    top: 15px;
+    left: 13px;
+  }
   img {
     width: 230px;
     height: 200px;

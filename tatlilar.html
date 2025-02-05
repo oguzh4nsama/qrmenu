@@ -4,121 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Menü</title>
-    <style>
-      /* Genel Stil */
-      body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-      }
-
-      h1 {
-        background-color: #333;
-        color: white;
-        padding: 20px;
-        margin-bottom: 40px;
-      }
-
-      #menuContainer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
-      }
-
-      /* Kategori Stili */
-      .category {
-        width: 100%;
-        padding: 10px;
-      }
-
-      .category h2 {
-        font-size: 24px;
-        color: #333;
-        margin-bottom: 20px;
-      }
-
-      /* Ürün Kartı Stili */
-      .item-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between; /* 2'li kart yapısı için */
-        gap: 20px;
-        width: 100%;
-      }
-
-      .item {
-        width: 40%; /* Kart genişliğini %48 yaparak 2 kartı yan yana yerleştiriyoruz */
-        margin: 10px 0;
-        padding: 15px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        text-align: center;
-        background-color: #f9f9f9;
-      }
-
-      .item img {
-        width: 100%;
-        border-radius: 8px;
-        object-fit: cover;
-        height: 150px;
-        margin-bottom: 10px;
-      }
-
-      .item-name {
-        font-size: 18px;
-        color: #333;
-        margin: 10px 0;
-      }
-
-      .item-price {
-        font-size: 16px;
-        color: #555;
-        font-weight: bold;
-      }
-
-      /* Mobil Uyumluluk */
-      @media (max-width: 768px) {
-        .item {
-          width: 40%; /* Tablet ve üstü için %48 genişlik */
-        }
-
-        h1 {
-          font-size: 22px;
-        }
-
-        .category h2 {
-          font-size: 20px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .item {
-          width: 50%; /* Küçük ekranlarda tek sütun */
-        }
-
-        h1 {
-          font-size: 18px;
-        }
-
-        .category h2 {
-          font-size: 18px;
-        }
-      }
-      a {
-        background-color: #fff;
-        width: 300px;
-        color: red;
-        height: 100px;
-        text-decoration: none; /* Alt çizgiyi kaldırır */
-      }
-    </style>
+    <link rel="stylesheet" href="meu.css">
   </head>
   <body>
     <h1>Menü</h1>
-    <div id="menuContainer"></div>
     <div><a href="menu.html">geri dön</a></div>
+
+    <div id="menuContainer">
+
+    </div>
     <script>
       fetch("kategori.json") // JSON dosyasını alıyoruz
         .then((response) => {
@@ -140,7 +34,7 @@
           const container = document.getElementById("menuContainer");
           const categoryDiv = document.createElement("div");
           categoryDiv.classList.add("category");
-          categoryDiv.innerHTML = `<h2>İçecekler</h2>`;
+          categoryDiv.innerHTML = `<h2>tatlilar</h2>`;
 
           const itemContainer = document.createElement("div");
           itemContainer.classList.add("item-container");
