@@ -8,51 +8,24 @@
   </head>
   <body>
     <h1>Menü</h1>
+
+    <!-- Ürünler buraya yüklenecek -->
     <div id="menuContainer"></div>
+
+    <!-- Sepet Popup -->
+    <div id="sepetDiv" class="popup" style="display: none;">
+      <h2>Sepetiniz</h2>
+      <p id="sepetCount">Sepetinizde 0 ürün var</p>
+      <div id="sepetItems"></div>
+      <p id="sepetTotal">Toplam Tutar: 0 TL</p>
+      <button id="onaylaBtn">Sepeti Onayla</button>
+      <button id="kapatBtn">Kapat</button>
+    </div>
+
+    <!-- Geri dönüş linki -->
     <div><a href="menu.html">geri dön</a></div>
-    <script>
-      fetch("kategori.json") // JSON dosyasını alıyoruz
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("JSON dosyası yüklenemedi!");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          // "sicak_icicek" kategorisinin var olup olmadığını kontrol edelim
-          const icecekler = data["sicak_icecek"];
 
-          if (!icecekler) {
-            console.error("İçecekler kategorisi bulunamadı!");
-            return; // Eğer kategori yoksa işlem yapma
-          }
-
-          // "İçecekler" kategorisindeki ürünleri işle
-          const container = document.getElementById("menuContainer");
-          const categoryDiv = document.createElement("div");
-          categoryDiv.classList.add("category");
-          categoryDiv.innerHTML = `<h2>sicak içecekler</h2>`;
-
-          const itemContainer = document.createElement("div");
-          itemContainer.classList.add("item-container");
-
-          icecekler.forEach((item) => {
-            const itemDiv = document.createElement("div");
-            itemDiv.classList.add("item");
-
-            itemDiv.innerHTML = `
-            <img src="${item.resim}" alt="${item.isim}" class="item-image">
-            <p class="item-name">${item.isim}</p>
-            <p class="item-price">${item.fiyat} TL</p>
-        `;
-
-            itemContainer.appendChild(itemDiv);
-          });
-
-          categoryDiv.appendChild(itemContainer);
-          container.appendChild(categoryDiv);
-        })
-        .catch((error) => console.error("Hata:", error)); // Hata durumunda konsola yazdırma
-    </script>
+    <!-- JavaScript dosyan -->
+    <script src="sicak_icicek.js"></script>
   </body>
 </html>

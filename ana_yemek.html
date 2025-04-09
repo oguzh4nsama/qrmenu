@@ -5,55 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Menü</title>
     <link rel="stylesheet" href="meu.css">
-
   </head>
   <body>
     <h1>Menü</h1>
+    
+    <!-- Menü öğeleri burada dinamik olarak yüklenecek -->
     <div id="menuContainer"></div>
+
+    <!-- Sepet kısmı (Bağımsız olarak popup şeklinde görünecek) -->
+    <div id="sepetDiv" class="popup">
+      <h2>Sepetiniz</h2>
+      <p id="sepetCount">Sepetinizde 0 ürün var</p>
+      <!-- Sepet dinamik olarak güncellenecek -->
+      <div id="sepetItems"></div>
+      <button id="onaylaBtn">Sepeti Onayla</button>
+      <button id="kapatBtn">Kapat</button>
+    </div>
+
+    <!-- Geri dön linki -->
     <div><a href="menu.html">geri dön</a></div>
-    <script>
-      fetch("kategori.json") // JSON dosyasını alıyoruz
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("JSON dosyası yüklenemedi!");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          // "sicak_icicek" kategorisinin var olup olmadığını kontrol edelim
-          const icecekler = data["ana_yemek"];
 
-          if (!icecekler) {
-            console.error("İçecekler kategorisi bulunamadı!");
-            return; // Eğer kategori yoksa işlem yapma
-          }
-
-          // "İçecekler" kategorisindeki ürünleri işle
-          const container = document.getElementById("menuContainer");
-          const categoryDiv = document.createElement("div");
-          categoryDiv.classList.add("category");
-          categoryDiv.innerHTML = `<h2>yemekler</h2>`;
-
-          const itemContainer = document.createElement("div");
-          itemContainer.classList.add("item-container");
-
-          icecekler.forEach((item) => {
-            const itemDiv = document.createElement("div");
-            itemDiv.classList.add("item");
-
-            itemDiv.innerHTML = `
-            <img src="${item.resim}" alt="${item.isim}" class="item-image">
-            <p class="item-name">${item.isim}</p>
-            <p class="item-price">${item.fiyat} TL</p>
-        `;
-
-            itemContainer.appendChild(itemDiv);
-          });
-
-          categoryDiv.appendChild(itemContainer);
-          container.appendChild(categoryDiv);
-        })
-        .catch((error) => console.error("Hata:", error)); // Hata durumunda konsola yazdırma
-    </script>
+    <!-- JS dosyasını doğru şekilde çağırıyoruz -->
+    <script src="ana_yemek.js"></script>
   </body>
 </html>

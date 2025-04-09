@@ -56,3 +56,35 @@
     </script>
   </body>
 </html>
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atıştırmalık Menü</title>
+    <link rel="stylesheet" href="meu.css">
+  </head>
+  <body>
+    <h1>Atıştırmalıklar Menüsü</h1>
+    
+    <!-- Menü öğeleri burada dinamik olarak yüklenecek -->
+    <div id="menuContainer"></div>
+
+    <!-- Sepet kısmı (Bağımsız olarak popup şeklinde görünecek) -->
+    <div id="sepetDiv" class="popup">
+      <h2>Sepetiniz</h2>
+      <p id="sepetCount">Sepetinizde 0 ürün var</p>
+      <!-- Sepet dinamik olarak güncellenecek -->
+      <div id="sepetItems"></div>
+      <p id="sepetTotal">Toplam Tutar: 0 TL</p> <!-- Toplam tutar alanı -->
+      <button id="onaylaBtn">Sepeti Onayla</button>
+      <button id="kapatBtn">Kapat</button>
+    </div>
+
+    <!-- Geri dön linki -->
+    <div><a href="menu.html">geri dön</a></div>
+
+    <!-- JS dosyasını doğru şekilde çağırıyoruz -->
+    <script src="atistirmalik.js"></script>
+  </body>
+</html>

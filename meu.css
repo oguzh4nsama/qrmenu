@@ -1,108 +1,175 @@
-  /* Genel Stil */
-  body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-  }
+/* Genel Stil */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
 
+h1 {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  margin-bottom: 40px;
+}
+
+/* Menü Container */
+#menuContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+/* Kategori Stili */
+.category {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 30px; /* Kategoriler arasına daha fazla mesafe ekledik */
+}
+
+.category h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Ürün Kartı Stili */
+
+
+.item {
+  width: 45%; /* Kart genişliğini %45 yaparak 2 kartı yan yana yerleştiriyoruz */
+  margin-bottom: 20px; /* Ürünler arasına daha fazla mesafe ekledik */
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #f9f9f9;
+  box-sizing: border-box; /* Kutunun toplam genişliğini doğru hesaplamak için */
+}
+
+.item img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  height: 150px;
+  margin-bottom: 15px; /* Resim ile isim arasına mesafe ekledik */
+}
+
+.item-name {
+  font-size: 18px;
+  color: #333;
+  margin: 10px 0;
+}
+
+.item-price {
+  font-size: 16px;
+  color: #555;
+  font-weight: bold;
+}
+
+/* Popup Görünümü */
+.popup {
+  display: none; /* Başlangıçta gizli olacak */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 300px;
+  max-height: 80%;
+  overflow-y: auto;
+}
+
+/* Sepet öğeleri */
+#sepetItems {
+  margin-top: 20px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Sepet öğeleri */
+.sepet-item {
+  margin-bottom: 10px;
+}
+
+#sepetCount {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Sepeti gösterme butonu */
+#sepetiGosterBtn {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#sepetiGosterBtn:hover {
+  background-color: #45a049;
+}
+
+/* Mobil Uyumluluk */
+@media (max-width: 768px) {
+  .item {
+    width: 45%; /* Tablet ve üstü için %45 genişlik */
+  }
+  
   h1 {
-    background-color: #333;
-    color: white;
-    padding: 20px;
-    margin-bottom: 40px;
-  }
-
-  #menuContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-  }
-
-  /* Kategori Stili */
-  .category {
-    width: 100%;
-    padding: 10px;
+    font-size: 22px;
   }
 
   .category h2 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
+    font-size: 20px;
   }
+}
 
-  /* Ürün Kartı Stili */
-  .item-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; /* 2'li kart yapısı için */
-    gap: 20px;
-    width: 100%;
-  }
-
+@media (max-width: 480px) {
   .item {
-    width: 40%; /* Kart genişliğini %48 yaparak 2 kartı yan yana yerleştiriyoruz */
-    margin: 10px 0;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    text-align: center;
-    background-color: #f9f9f9;
+    width: 80%; /* Küçük ekranlarda tek sütun */
   }
 
-  .item img {
-    width: 100%;
-    border-radius: 8px;
-    object-fit: cover;
-    height: 150px;
-    margin-bottom: 10px;
-  }
-
-  .item-name {
+  h1 {
     font-size: 18px;
-    color: #333;
-    margin: 10px 0;
   }
 
-  .item-price {
-    font-size: 16px;
-    color: #555;
-    font-weight: bold;
+  .category h2 {
+    font-size: 18px;
   }
+}
 
-  /* Mobil Uyumluluk */
-  @media (max-width: 768px) {
-    .item {
-      width: 40%; /* Tablet ve üstü için %48 genişlik */
-    }
-
-    h1 {
-      font-size: 22px;
-    }
-
-    .category h2 {
-      font-size: 20px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .item {
-      width: 50%; /* Küçük ekranlarda tek sütun */
-    }
-
-    h1 {
-      font-size: 18px;
-    }
-
-    .category h2 {
-      font-size: 18px;
-    }
-  }
-  a {
-    background-color: #fff;
-    width: 300px;
-    color: red;
-    height: 100px;
-    text-decoration: none; /* Alt çizgiyi kaldırır */
-  }
+/* Link Buton */
+a {
+  background-color: #fff;
+  width: 150px;
+  color: red;
+  height: 55px;
+  text-decoration: none; /* Alt çizgiyi kaldırır */
+  display: inline-block;
+  background-color: #4CAF50; /* yeşil arka plan */
+  border-radius: 8px;
+  transition: background-color 0.3s;
+  text-align: center;        /* yatay ortalama */
+  line-height: 55px;   
+}
