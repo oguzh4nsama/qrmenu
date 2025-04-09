@@ -8,14 +8,10 @@ function sepetiGuncelle() {
 
   sepetItems.innerHTML = "";
 
-  let toplam = 0;
-
   sepet.forEach((item, index) => {
     const itemDiv = document.createElement("div");
     itemDiv.classList.add("sepet-item");
-
-    toplam += Number(item.fiyat);
-
+  
     itemDiv.innerHTML = `
       <p>${item.isim} - ${item.fiyat} TL 
       <button onclick="urunSil(${index})">Sil</button></p>
@@ -24,7 +20,7 @@ function sepetiGuncelle() {
   });
 
   sepetCount.innerText = `Sepetinizde ${sepet.length} ürün var`;
-  sepetTotal.innerText = `Toplam Tutar: ${toplam} TL`;
+  sepetTotal.innerText = `Toplam Tutar: ${toplamTutar.toFixed(2)}  TL`;
 }
 
 function urunSil(index) {
@@ -33,7 +29,8 @@ function urunSil(index) {
 }
 
 function sepetiGoster() {
-  document.getElementById("sepetDiv").style.display = "block";
+ const sepetDiv = document.getElementById("sepetDiv").style.display = "block";
+ sepetDiv.style.display = 'block';
 }
 
 function sepetiOnayla() {
@@ -53,50 +50,60 @@ function sepetiKapat() {
 
 fetch("kategori.json")
   .then((response) => {
-    if (!response.ok) throw new Error("JSON dosyası yüklenemedi!");
+    if (!response.ok) {
+      throw new Error("JSON dosyası yüklenemedi!");
+    }
     return response.json();
   })
   .then((data) => {
-    const tatlilar = data["tatli"];
-
-    if (!tatlilar) {
-      console.error("Tatlı kategorisi bulunamadı!");
-      return;
-    }
-
-    const container = document.getElementById("menuContainer");
-    const categoryDiv = document.createElement("div");
-    categoryDiv.classList.add("category");
-    categoryDiv.innerHTML = `<h2>Tatlılar</h2>`;
-
-    const itemContainer = document.createElement("div");
-    itemContainer.classList.add("item-container");
-
-    tatlilar.forEach((item) => {
-      const itemLink = document.createElement("a");
-      itemLink.classList.add("item");
-      itemLink.href = "#";
-
-      itemLink.innerHTML = `
-        <img src="${item.resim}" alt="${item.isim}" class="item-image">
-        <p class="item-name">${item.isim}</p>
-        <p class="item-price">${item.fiyat} TL</p>
-      `;
-
-      itemLink.addEventListener("click", (event) => {
-        event.preventDefault();
-        sepet.push(item);
-        sepetiGuncelle();
-        sepetiGoster();
+    const tatlilar = data["tatli"]; // Sadece tatlılar kategorisini alıyoruz
+  
+    // Tatlılar kategorisini işle
+    if (tatlilar) {
+      const container = document.getElementById("menuContainer");
+      const categoryDiv = document.createElement("div");
+      categoryDiv.classList.add("category");
+      categoryDiv.innerHTML = `<h2>Tatlılar</h2>`;
+  
+      const itemContainer = document.createElement("div");
+      itemContainer.classList.add("item-container");
+  
+      tatlilar.forEach((item) => {
+        const itemLink = document.createElement("a");
+        itemLink.classList.add("item");
+        itemLink.href = "#"; // Yönlendirme olmayacak
+  
+        itemLink.innerHTML = `
+          <img src="${item.resim}" alt="${item.isim}" class="item-image">
+          <p class="item-name">${item.isim}</p>
+          <p class="item-price">${item.fiyat} TL</p>
+        `;
+  
+        // Tıklama olayını ekliyoruz: ürün sepete ekleniyor
+        itemLink.addEventListener("click", (event) => {
+          event.preventDefault();
+          sepet.push(item);
+          sepetiGuncelle();
+        });
+  
+        itemContainer.appendChild(itemLink);
       });
-
-      itemContainer.appendChild(itemLink);
-    });
-
-    categoryDiv.appendChild(itemContainer);
-    container.appendChild(categoryDiv);
+  
+      categoryDiv.appendChild(itemContainer);
+      container.appendChild(categoryDiv);
+    } else {
+      console.error("Tatlılar kategorisi bulunamadı!");
+    }
   })
   .catch((error) => console.error("Hata:", error));
-
-document.getElementById("onaylaBtn").addEventListener("click", sepetiOnayla);
-document.getElementById("kapatBtn").addEventListener("click", sepetiKapat);
+  
+  // Butonları bağlayalım
+  document.getElementById("onaylaBtn").addEventListener("click", sepetiOnayla);
+  document.getElementById("kapatBtn").addEventListener("click", sepetiKapat);
+  
+  // Sepet gösterme butonunu bağlayalım
+  const sepetiGosterBtn = document.createElement('button');
+  sepetiGosterBtn.innerText = 'Sepeti Göster';
+  sepetiGosterBtn.addEventListener('click', sepetiGoster);
+  document.body.appendChild(sepetiGosterBtn); // Sepet göster butonunu sayfaya ekle
+  
