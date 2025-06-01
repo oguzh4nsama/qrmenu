@@ -18,6 +18,7 @@ body {
   grid-template-rows: auto 2fr auto; /* Üst, orta ve alt satırlar */
   gap: 10px; /* Hücreler arasındaki boşluk */
   height: 100vh; /* Yüksekliği ekranın tamamı kadar yap */
+}
   .logo{
     left: 0px;
   }
@@ -62,7 +63,6 @@ body {
     text-decoration: none; /* Alt çizgiyi kaldırır */
     display: block; /* Tüm <li> elemanını kapsaması için blok seviye yapar */
   }
-}
 .top {
   grid-area: top;
 }
@@ -82,6 +82,7 @@ body {
     gap: 10px; /* Hücreler arasındaki boşluk */
     height: 100vh; /* Yüksekliği ekranın tamamı kadar yap */
     background: black;
+  
     img{
       width: 140px;
       height: 68px;
